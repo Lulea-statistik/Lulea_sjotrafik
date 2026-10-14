@@ -35,11 +35,12 @@ async def main():
             meta=item.get("MetaData") or {}
             if meta.get("MMSI"): mmsi.add(str(meta["MMSI"]))
     day=started.date().isoformat()
-    result={"sample_started_utc":started.isoformat(),"sample_seconds":90,
+    stamp=started.strftime("%Y-%m-%dT%H-%M-%SZ")
+    result={"sample_started_utc":started.isoformat(),"sample_seconds":90,"sampling_hour_utc":started.hour,
        "bbox_wgs84_latlon":BOX,"message_counts":dict(seen),
        "unique_mmsi_count":len(mmsi),"warning":"Sample coverage only; not continuous AIS history"}
-    OUT.mkdir(parents=True,exist_ok=True)
-    (OUT/(day+".json")).write_text(json.dumps(result,indent=2)+"\n")
+    (OUT/day).mkdir(parents=True,exist_ok=True)
+    (OUT/day/(stamp+".json")).write_text(json.dumps(result,indent=2)+"\n")
     print(result)
 
 if __name__=="__main__": asyncio.run(main())
