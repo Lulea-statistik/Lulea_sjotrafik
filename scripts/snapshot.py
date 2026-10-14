@@ -1,52 +1,92 @@
-"""Archive the public Lulea port call listing; fail closed on markup changes."""
-import hashlib, json, re
+"""Daily public port-call and cruise schedule snapshots."""
+import json
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 import requests
 from bs4 import BeautifulSoup
 
-URL="https://portlulea.com/sjotjanster/trafikinformation/"
 ROOT=Path(__file__).resolve().parents[1]/"data"
-FIELDS=("IMO-nummer","Ankommer från","Avgår till","Avsikt med besöket","Fartygstyp","Djupgående in","Djupgående ut","Flagg","Signal","Längd","Bredd","Bruttoton","DWT")
+URLS={"commercial":"https://portlulea.com/sjotjanster/trafikinformation/",
+      "cruise":"https://portlulea.com/sjotjanster/kryssningsfartyg/"}
 
-def extract(html):
-    soup=BeautifulSoup(html,"html.parser")
+def clean(x):
+    return " ".join(x.get_text(" ",strip=True).split())
+
+def extract_commercial(soup):
     records=[]
-    for tr in soup.select("tr"):
-        text=tr.get_text("\n",strip=True)
-        match=re.search(r"IMO-nummer:\s*(\d{7})",text)
-        if not match: continue
-        cells=[x.get_text(" ",strip=True) for x in tr.find_all("td",recursive=False)]
+    for row in soup.select("tr.c-ahoy-port-list__row"):
+        detail=row.find_next_sibling("tr")
+        if not detail or "c-ahoy-port-list__row-content" not in detail.get("class",[]): continue
         fields={}
-        for name in FIELDS:
-            value=re.search(r"(?:^|\n)"+re.escape(name)+r":\s*([^\n]*)",text)
-            fields[name]=value.group(1).strip() if value else None
-        records.append({"imo":match.group(1),"columns":cells,"fields":fields,
-                        "date_strings":re.findall(r"\d{2}/\d{2}/\d{2},?\s*\d{2}:\d{2}",text)})
-    if not records: raise RuntimeError("No IMO rows parsed; refusing to archive potentially invalid page.")
+        for tr in detail.select("tr"):
+            th=tr.find("th")
+            td=tr.find("td")
+            if th and td: fields[clean(th).rstrip(":")]=clean(td)
+        imo=fields.get("IMO-nummer")
+        if not imo: continue
+        datecell=row.select_one(".c-ahoy-port-list-date .d-none.d-md-block")
+        dates=list(datecell.stripped_strings) if datecell else []
+        records.append({
+          "source_type":"commercial",
+          "vessel":clean(row.select_one(".c-ahoy-port-vessel")) if row.select_one(".c-ahoy-port-vessel") else "",
+          "imo":imo,"arrival":dates[0] if len(dates)>0 else None,
+          "departure":dates[1] if len(dates)>1 else None,
+          "terminal":clean(row.select_one(".c-ahoy-port-list-terminal")) if row.select_one(".c-ahoy-port-list-terminal") else "",
+          "agent":clean(row.select_one(".c-ahoy-port-list-agent")) if row.select_one(".c-ahoy-port-list-agent") else "",
+          "status":clean(row.select_one(".c-ahoy-port-list-status")) if row.select_one(".c-ahoy-port-list-status") else "",
+          "details":fields
+        })
+    if not records: raise RuntimeError("No commercial port rows found; source may have changed")
     return records
 
-def save(path,obj):
+def extract_cruise(soup):
+    table=None
+    for candidate in soup.select("table"):
+        headings=[clean(th).casefold() for th in candidate.select("thead th")]
+        if not headings:
+            first=candidate.find("tr")
+            headings=[clean(th).casefold() for th in first.find_all(["th","td"])] if first else []
+        if "ankommer" in headings and "fartyg" in headings and "terminal" in headings:
+            table=candidate
+            break
+    if table is None: raise RuntimeError("Cruise arrival table not found; refusing empty data")
+    rows=table.select("tbody tr") or table.select("tr")[1:]
+    result=[]
+    for row in rows:
+        cells=[clean(cell) for cell in row.find_all("td",recursive=False)]
+        if len(cells)<4: continue
+        result.append({"source_type":"cruise","planned_arrival":cells[0],
+          "planned_departure":cells[1],"vessel":cells[2],"terminal":cells[3],
+          "origin":cells[4] if len(cells)>4 else None,
+          "destination":cells[5] if len(cells)>5 else None,
+          "status":"planned"})
+    # An empty but well-formed table is valid: no currently scheduled cruise calls.
+    return result
+
+def save(path,contents):
     path.parent.mkdir(parents=True,exist_ok=True)
-    path.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    path.write_text(contents,encoding="utf-8")
 
 def main():
     now=datetime.now(ZoneInfo("Europe/Stockholm"))
-    today=now.date().isoformat()
-    response=requests.get(URL,timeout=40,headers={"User-Agent":"Lulea-sjotrafik-history/1.0"})
-    response.raise_for_status()
-    response.encoding=response.apparent_encoding or "utf-8"
-    html=response.text
-    if "Fartyg i hamnen" not in html or "IMO-nummer" not in html:
-        raise RuntimeError("Expected port listing missing")
-    items=extract(html)
-    payload={"date":today,"collected_at":now.isoformat(),"source":URL,"count":len(items),"records":items}
-    save(ROOT/"snapshots"/(today+".json"),payload)
-    raw=ROOT/"raw"/(today+".html")
-    raw.parent.mkdir(parents=True,exist_ok=True)
-    raw.write_text(html,encoding="utf-8")
-    # Preserve daily snapshots as observations. Do not infer exact arrivals from disappearance.
-    print(f"Archived {len(items)} public listing records for {today}")
+    day=now.date().isoformat()
+    # Fetch and validate both before writing: a malformed source fails the entire run.
+    staged={}
+    for category,url in URLS.items():
+        r=requests.get(url,timeout=40,headers={"User-Agent":"Lulea-sjotrafik-history/1.1"})
+        r.raise_for_status()
+        r.encoding=r.apparent_encoding or "utf-8"
+        soup=BeautifulSoup(r.text,"html.parser")
+        records=extract_commercial(soup) if category=="commercial" else extract_cruise(soup)
+        staged[category]=(r.text,records,url)
+    for category,(html,records,url) in staged.items():
+        prefix="cruise" if category=="cruise" else ""
+        raw=ROOT/("cruise/raw" if prefix else "raw")/(day+".html")
+        structured=ROOT/("cruise/snapshots" if prefix else "snapshots")/(day+".json")
+        save(raw,html)
+        save(structured,json.dumps({"date":day,"collected_at":now.isoformat(),"source":url,
+             "count":len(records),"records":records},ensure_ascii=False,indent=2)+"\n")
+        print(category,day,len(records))
 
 if __name__=="__main__": main()
