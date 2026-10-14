@@ -17,8 +17,7 @@ OUT=Path(__file__).resolve().parents[1]/"data"/"ais_probe"
 async def main():
     key=os.getenv("AISSTREAM_API_KEY")
     if not key:
-        print("AISSTREAM_API_KEY not configured; AIS probe skipped.")
-        return
+        raise RuntimeError("AISSTREAM_API_KEY missing. Add it in repository Actions secrets before running.")
     seen=Counter()
     mmsi=set()
     started=datetime.now(timezone.utc)
