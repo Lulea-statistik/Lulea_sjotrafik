@@ -1,0 +1,844 @@
+{
+  "date": "2026-10-14",
+  "collected_at": "2026-10-14T17:12:32.056134+02:00",
+  "source": "https://portlulea.com/sjotjanster/trafikinformation/",
+  "count": 38,
+  "records": [
+    {
+      "imo": "9851505",
+      "columns": [
+        "IMO-nummer: 9851505 Ankommer från: Hay Point Avgår till: Skagen Avsikt med besöket: Lossning Fartygstyp: Övrigt torrlastfartyg Djupgående in: 10,5 Djupgående ut: 9 Flagg: PANAMA (Including former Canal Zone) Signal: 3FNI9 Längd: 229 Bredd: 32.31 Bruttoton: 43315 DWT: 80871"
+      ],
+      "fields": {
+        "IMO-nummer": "9851505",
+        "Ankommer från": "Hay Point",
+        "Avgår till": "Skagen",
+        "Avsikt med besöket": "Lossning",
+        "Fartygstyp": "Övrigt torrlastfartyg",
+        "Djupgående in": "10,5",
+        "Djupgående ut": "9",
+        "Flagg": "PANAMA (Including former Canal Zone)",
+        "Signal": "3FNI9",
+        "Längd": "229",
+        "Bredd": "32.31",
+        "Bruttoton": "43315",
+        "DWT": "80871"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9851505",
+      "columns": [
+        "9851505"
+      ],
+      "fields": {
+        "IMO-nummer": "9851505",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9734769",
+      "columns": [
+        "IMO-nummer: 9734769 Ankommer från: Oxelosund (Ports) Avgår till: Skagen Avsikt med besöket: Lossning Fartygstyp: Bulkfartyg Djupgående in: 10,58 Djupgående ut: 7 Flagg: MARSHALL ISLANDS Signal: V7A4080 Längd: 229 Bredd: 32.3 Bruttoton: 44120 DWT: 81781"
+      ],
+      "fields": {
+        "IMO-nummer": "9734769",
+        "Ankommer från": "Oxelosund (Ports)",
+        "Avgår till": "Skagen",
+        "Avsikt med besöket": "Lossning",
+        "Fartygstyp": "Bulkfartyg",
+        "Djupgående in": "10,58",
+        "Djupgående ut": "7",
+        "Flagg": "MARSHALL ISLANDS",
+        "Signal": "V7A4080",
+        "Längd": "229",
+        "Bredd": "32.3",
+        "Bruttoton": "44120",
+        "DWT": "81781"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9734769",
+      "columns": [
+        "9734769"
+      ],
+      "fields": {
+        "IMO-nummer": "9734769",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "1056630",
+      "columns": [
+        "IMO-nummer: 1056630 Ankommer från: Aughinish Island Avgår till: Hull Avsikt med besöket: Lastning Fartygstyp: Övrigt fartyg. Ange typ Djupgående in: 6 Djupgående ut: 8,5 Flagg: NETHERLANDS Signal: PBVD Längd: 149.95 Bredd: 16.25 Bruttoton: 8849 DWT: 14399"
+      ],
+      "fields": {
+        "IMO-nummer": "1056630",
+        "Ankommer från": "Aughinish Island",
+        "Avgår till": "Hull",
+        "Avsikt med besöket": "Lastning",
+        "Fartygstyp": "Övrigt fartyg. Ange typ",
+        "Djupgående in": "6",
+        "Djupgående ut": "8,5",
+        "Flagg": "NETHERLANDS",
+        "Signal": "PBVD",
+        "Längd": "149.95",
+        "Bredd": "16.25",
+        "Bruttoton": "8849",
+        "DWT": "14399"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "1056630",
+      "columns": [
+        "1056630"
+      ],
+      "fields": {
+        "IMO-nummer": "1056630",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9747986",
+      "columns": [
+        "IMO-nummer: 9747986 Ankommer från: Goteborg Avgår till: Gavle Avsikt med besöket: Lossning Fartygstyp: Tankfartyg Djupgående in: 9,1 Djupgående ut: Flagg: DENMARK Signal: OYBJ2 Längd: 147 Bredd: 22.04 Bruttoton: 11463 DWT: 14827"
+      ],
+      "fields": {
+        "IMO-nummer": "9747986",
+        "Ankommer från": "Goteborg",
+        "Avgår till": "Gavle",
+        "Avsikt med besöket": "Lossning",
+        "Fartygstyp": "Tankfartyg",
+        "Djupgående in": "9,1",
+        "Djupgående ut": "Flagg:",
+        "Flagg": "DENMARK",
+        "Signal": "OYBJ2",
+        "Längd": "147",
+        "Bredd": "22.04",
+        "Bruttoton": "11463",
+        "DWT": "14827"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9747986",
+      "columns": [
+        "9747986"
+      ],
+      "fields": {
+        "IMO-nummer": "9747986",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9113018",
+      "columns": [
+        "IMO-nummer: 9113018 Ankommer från: Kokkola Avgår till: Raahe Avsikt med besöket: Lossning Fartygstyp: Övrigt torrlastfartyg Djupgående in: 8,5 Djupgående ut: 9 Flagg: FINLAND (Including Åland Islands) Signal: OJGT Längd: 137 Bredd: 22 Bruttoton: 10098 DWT: 13367"
+      ],
+      "fields": {
+        "IMO-nummer": "9113018",
+        "Ankommer från": "Kokkola",
+        "Avgår till": "Raahe",
+        "Avsikt med besöket": "Lossning",
+        "Fartygstyp": "Övrigt torrlastfartyg",
+        "Djupgående in": "8,5",
+        "Djupgående ut": "9",
+        "Flagg": "FINLAND (Including Åland Islands)",
+        "Signal": "OJGT",
+        "Längd": "137",
+        "Bredd": "22",
+        "Bruttoton": "10098",
+        "DWT": "13367"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9113018",
+      "columns": [
+        "9113018"
+      ],
+      "fields": {
+        "IMO-nummer": "9113018",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "8503503",
+      "columns": [
+        "IMO-nummer: 8503503 Ankommer från: Raahe Avgår till: Raahe Avsikt med besöket: Lastning Fartygstyp: Pråmdragande fartyg Djupgående in: 7 Djupgående ut: 7 Flagg: FINLAND (Including Åland Islands) Signal: OIVR Längd: 160 Bredd: 28 Bruttoton: 10628 DWT: 14000"
+      ],
+      "fields": {
+        "IMO-nummer": "8503503",
+        "Ankommer från": "Raahe",
+        "Avgår till": "Raahe",
+        "Avsikt med besöket": "Lastning",
+        "Fartygstyp": "Pråmdragande fartyg",
+        "Djupgående in": "7",
+        "Djupgående ut": "7",
+        "Flagg": "FINLAND (Including Åland Islands)",
+        "Signal": "OIVR",
+        "Längd": "160",
+        "Bredd": "28",
+        "Bruttoton": "10628",
+        "DWT": "14000"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "8503503",
+      "columns": [
+        "8503503"
+      ],
+      "fields": {
+        "IMO-nummer": "8503503",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9113018",
+      "columns": [
+        "IMO-nummer: 9113018 Ankommer från: Kokkola Avgår till: Raahe Avsikt med besöket: Lastning Fartygstyp: Övrigt torrlastfartyg Djupgående in: 8,5 Djupgående ut: 9 Flagg: FINLAND (Including Åland Islands) Signal: OJGT Längd: 137 Bredd: 22 Bruttoton: 10098 DWT: 13367"
+      ],
+      "fields": {
+        "IMO-nummer": "9113018",
+        "Ankommer från": "Kokkola",
+        "Avgår till": "Raahe",
+        "Avsikt med besöket": "Lastning",
+        "Fartygstyp": "Övrigt torrlastfartyg",
+        "Djupgående in": "8,5",
+        "Djupgående ut": "9",
+        "Flagg": "FINLAND (Including Åland Islands)",
+        "Signal": "OJGT",
+        "Längd": "137",
+        "Bredd": "22",
+        "Bruttoton": "10098",
+        "DWT": "13367"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9113018",
+      "columns": [
+        "9113018"
+      ],
+      "fields": {
+        "IMO-nummer": "9113018",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9818321",
+      "columns": [
+        "IMO-nummer: 9818321 Ankommer från: Skelleftea Avgår till: Hoganas Avsikt med besöket: Lastning Fartygstyp: Övrigt torrlastfartyg Djupgående in: 6 Djupgående ut: 7 Flagg: FAROE ISLANDS Signal: OZ2179 Längd: 104.6 Bredd: 13.4 Bruttoton: 3618 DWT: 6712"
+      ],
+      "fields": {
+        "IMO-nummer": "9818321",
+        "Ankommer från": "Skelleftea",
+        "Avgår till": "Hoganas",
+        "Avsikt med besöket": "Lastning",
+        "Fartygstyp": "Övrigt torrlastfartyg",
+        "Djupgående in": "6",
+        "Djupgående ut": "7",
+        "Flagg": "FAROE ISLANDS",
+        "Signal": "OZ2179",
+        "Längd": "104.6",
+        "Bredd": "13.4",
+        "Bruttoton": "3618",
+        "DWT": "6712"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9818321",
+      "columns": [
+        "9818321"
+      ],
+      "fields": {
+        "IMO-nummer": "9818321",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "1026659",
+      "columns": [
+        "IMO-nummer: 1026659 Ankommer från: Goteborg Avgår till: Skagen Avsikt med besöket: Lossning Fartygstyp: Tankfartyg Djupgående in: 9 Djupgående ut: 6 Flagg: PORTUGAL Signal: CQ2790 Längd: 149.8 Bredd: 23 Bruttoton: 11865 DWT: 18362"
+      ],
+      "fields": {
+        "IMO-nummer": "1026659",
+        "Ankommer från": "Goteborg",
+        "Avgår till": "Skagen",
+        "Avsikt med besöket": "Lossning",
+        "Fartygstyp": "Tankfartyg",
+        "Djupgående in": "9",
+        "Djupgående ut": "6",
+        "Flagg": "PORTUGAL",
+        "Signal": "CQ2790",
+        "Längd": "149.8",
+        "Bredd": "23",
+        "Bruttoton": "11865",
+        "DWT": "18362"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "1026659",
+      "columns": [
+        "1026659"
+      ],
+      "fields": {
+        "IMO-nummer": "1026659",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9194074",
+      "columns": [
+        "IMO-nummer: 9194074 Ankommer från: Slite (Ports) Avgår till: Slite (Ports) Avsikt med besöket: Lastning Fartygstyp: Övrigt torrlastfartyg Djupgående in: 3,9 Djupgående ut: Flagg: CYPRUS Signal: 5BWR3 Längd: 98.9 Bredd: 13.8 Bruttoton: 3170 DWT: 4555"
+      ],
+      "fields": {
+        "IMO-nummer": "9194074",
+        "Ankommer från": "Slite (Ports)",
+        "Avgår till": "Slite (Ports)",
+        "Avsikt med besöket": "Lastning",
+        "Fartygstyp": "Övrigt torrlastfartyg",
+        "Djupgående in": "3,9",
+        "Djupgående ut": "Flagg:",
+        "Flagg": "CYPRUS",
+        "Signal": "5BWR3",
+        "Längd": "98.9",
+        "Bredd": "13.8",
+        "Bruttoton": "3170",
+        "DWT": "4555"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9194074",
+      "columns": [
+        "9194074"
+      ],
+      "fields": {
+        "IMO-nummer": "9194074",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9851505",
+      "columns": [
+        "IMO-nummer: 9851505 Ankommer från: Hay Point Avgår till: Skagen Avsikt med besöket: Lossning Fartygstyp: Övrigt torrlastfartyg Djupgående in: 10,5 Djupgående ut: 9 Flagg: PANAMA (Including former Canal Zone) Signal: 3FNI9 Längd: 229 Bredd: 32.31 Bruttoton: 43315 DWT: 80871"
+      ],
+      "fields": {
+        "IMO-nummer": "9851505",
+        "Ankommer från": "Hay Point",
+        "Avgår till": "Skagen",
+        "Avsikt med besöket": "Lossning",
+        "Fartygstyp": "Övrigt torrlastfartyg",
+        "Djupgående in": "10,5",
+        "Djupgående ut": "9",
+        "Flagg": "PANAMA (Including former Canal Zone)",
+        "Signal": "3FNI9",
+        "Längd": "229",
+        "Bredd": "32.31",
+        "Bruttoton": "43315",
+        "DWT": "80871"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9851505",
+      "columns": [
+        "9851505"
+      ],
+      "fields": {
+        "IMO-nummer": "9851505",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9173692",
+      "columns": [
+        "IMO-nummer: 9173692 Ankommer från: Oxelosund (Ports) Avgår till: Raahe Avsikt med besöket: Lastning Fartygstyp: Övrigt torrlastfartyg Djupgående in: 7 Djupgående ut: 8,6 Flagg: FINLAND (Including Åland Islands) Signal: OJIH Längd: 137 Bredd: 22 Bruttoton: 10098 DWT: 13340"
+      ],
+      "fields": {
+        "IMO-nummer": "9173692",
+        "Ankommer från": "Oxelosund (Ports)",
+        "Avgår till": "Raahe",
+        "Avsikt med besöket": "Lastning",
+        "Fartygstyp": "Övrigt torrlastfartyg",
+        "Djupgående in": "7",
+        "Djupgående ut": "8,6",
+        "Flagg": "FINLAND (Including Åland Islands)",
+        "Signal": "OJIH",
+        "Längd": "137",
+        "Bredd": "22",
+        "Bruttoton": "10098",
+        "DWT": "13340"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9173692",
+      "columns": [
+        "9173692"
+      ],
+      "fields": {
+        "IMO-nummer": "9173692",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9263564",
+      "columns": [
+        "IMO-nummer: 9263564 Ankommer från: Pitea Avgår till: Santander Avsikt med besöket: Annan orsak Fartygstyp: Bulkfartyg Djupgående in: 4 Djupgående ut: 5,5 Flagg: FAROE ISLANDS Signal: OZ2129 Längd: 89 Bredd: 13.35 Bruttoton: 2556 DWT:"
+      ],
+      "fields": {
+        "IMO-nummer": "9263564",
+        "Ankommer från": "Pitea",
+        "Avgår till": "Santander",
+        "Avsikt med besöket": "Annan orsak",
+        "Fartygstyp": "Bulkfartyg",
+        "Djupgående in": "4",
+        "Djupgående ut": "5,5",
+        "Flagg": "FAROE ISLANDS",
+        "Signal": "OZ2129",
+        "Längd": "89",
+        "Bredd": "13.35",
+        "Bruttoton": "2556",
+        "DWT": ""
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9263564",
+      "columns": [
+        "9263564"
+      ],
+      "fields": {
+        "IMO-nummer": "9263564",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9504152",
+      "columns": [
+        "IMO-nummer: 9504152 Ankommer från: Slite (Ports) Avgår till: Skelleftehamn Avsikt med besöket: Annan orsak Fartygstyp: Bulkfartyg Djupgående in: Djupgående ut: Flagg: NETHERLANDS Signal: PCMK Längd: 123 Bredd: 16 Bruttoton: 6069 DWT: 9927"
+      ],
+      "fields": {
+        "IMO-nummer": "9504152",
+        "Ankommer från": "Slite (Ports)",
+        "Avgår till": "Skelleftehamn",
+        "Avsikt med besöket": "Annan orsak",
+        "Fartygstyp": "Bulkfartyg",
+        "Djupgående in": "Djupgående ut:",
+        "Djupgående ut": "Flagg:",
+        "Flagg": "NETHERLANDS",
+        "Signal": "PCMK",
+        "Längd": "123",
+        "Bredd": "16",
+        "Bruttoton": "6069",
+        "DWT": "9927"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9504152",
+      "columns": [
+        "9504152"
+      ],
+      "fields": {
+        "IMO-nummer": "9504152",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9194098",
+      "columns": [
+        "IMO-nummer: 9194098 Ankommer från: Slite (Ports) Avgår till: Slite (Ports) Avsikt med besöket: Lastning Fartygstyp: Övrigt torrlastfartyg Djupgående in: Djupgående ut: Flagg: CYPRUS Signal: 5BFU4 Längd: 98.94 Bredd: 14 Bruttoton: 3170 DWT:"
+      ],
+      "fields": {
+        "IMO-nummer": "9194098",
+        "Ankommer från": "Slite (Ports)",
+        "Avgår till": "Slite (Ports)",
+        "Avsikt med besöket": "Lastning",
+        "Fartygstyp": "Övrigt torrlastfartyg",
+        "Djupgående in": "Djupgående ut:",
+        "Djupgående ut": "Flagg:",
+        "Flagg": "CYPRUS",
+        "Signal": "5BFU4",
+        "Längd": "98.94",
+        "Bredd": "14",
+        "Bruttoton": "3170",
+        "DWT": ""
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9194098",
+      "columns": [
+        "9194098"
+      ],
+      "fields": {
+        "IMO-nummer": "9194098",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9277319",
+      "columns": [
+        "IMO-nummer: 9277319 Ankommer från: Boulogne Sur Mer Avgår till: Avsikt med besöket: Annan orsak Fartygstyp: Övrigt torrlastfartyg Djupgående in: 7,2 Djupgående ut: Flagg: CYPRUS Signal: 5BXS6 Längd: 119.98 Bredd: 15.2 Bruttoton: 5057 DWT: 7870"
+      ],
+      "fields": {
+        "IMO-nummer": "9277319",
+        "Ankommer från": "Boulogne Sur Mer",
+        "Avgår till": "Avsikt med besöket:",
+        "Avsikt med besöket": "Annan orsak",
+        "Fartygstyp": "Övrigt torrlastfartyg",
+        "Djupgående in": "7,2",
+        "Djupgående ut": "Flagg:",
+        "Flagg": "CYPRUS",
+        "Signal": "5BXS6",
+        "Längd": "119.98",
+        "Bredd": "15.2",
+        "Bruttoton": "5057",
+        "DWT": "7870"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9277319",
+      "columns": [
+        "9277319"
+      ],
+      "fields": {
+        "IMO-nummer": "9277319",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9208203",
+      "columns": [
+        "IMO-nummer: 9208203 Ankommer från: Adamos Milos Avgår till: Skagen Avsikt med besöket: Lossning Fartygstyp: Övrigt torrlastfartyg Djupgående in: 9,7 Djupgående ut: 6 Flagg: NORWAY Signal: LALF8 Längd: 142.82 Bredd: 21.5 Bruttoton: 11894 DWT: 17539"
+      ],
+      "fields": {
+        "IMO-nummer": "9208203",
+        "Ankommer från": "Adamos Milos",
+        "Avgår till": "Skagen",
+        "Avsikt med besöket": "Lossning",
+        "Fartygstyp": "Övrigt torrlastfartyg",
+        "Djupgående in": "9,7",
+        "Djupgående ut": "6",
+        "Flagg": "NORWAY",
+        "Signal": "LALF8",
+        "Längd": "142.82",
+        "Bredd": "21.5",
+        "Bruttoton": "11894",
+        "DWT": "17539"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9208203",
+      "columns": [
+        "9208203"
+      ],
+      "fields": {
+        "IMO-nummer": "9208203",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9698862",
+      "columns": [
+        "IMO-nummer: 9698862 Ankommer från: Avgår till: Skagen Avsikt med besöket: Lossning Fartygstyp: Djupgående in: 10,6 Djupgående ut: 7 Flagg: CYPRUS Signal: 5BEB4 Längd: Bredd: Bruttoton: 43229 DWT:"
+      ],
+      "fields": {
+        "IMO-nummer": "9698862",
+        "Ankommer från": "Avgår till:",
+        "Avgår till": "Skagen",
+        "Avsikt med besöket": "Lossning",
+        "Fartygstyp": "Djupgående in:",
+        "Djupgående in": "10,6",
+        "Djupgående ut": "7",
+        "Flagg": "CYPRUS",
+        "Signal": "5BEB4",
+        "Längd": "Bredd:",
+        "Bredd": "Bruttoton:",
+        "Bruttoton": "43229",
+        "DWT": ""
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9698862",
+      "columns": [
+        "9698862"
+      ],
+      "fields": {
+        "IMO-nummer": "9698862",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9783148",
+      "columns": [
+        "IMO-nummer: 9783148 Ankommer från: Hay Point Avgår till: Skagen Avsikt med besöket: Lossning Fartygstyp: Bulkfartyg Djupgående in: 10,6 Djupgående ut: 7 Flagg: MARSHALL ISLANDS Signal: V7B3095 Längd: 229 Bredd: 32 Bruttoton: 43018 DWT: 81858"
+      ],
+      "fields": {
+        "IMO-nummer": "9783148",
+        "Ankommer från": "Hay Point",
+        "Avgår till": "Skagen",
+        "Avsikt med besöket": "Lossning",
+        "Fartygstyp": "Bulkfartyg",
+        "Djupgående in": "10,6",
+        "Djupgående ut": "7",
+        "Flagg": "MARSHALL ISLANDS",
+        "Signal": "V7B3095",
+        "Längd": "229",
+        "Bredd": "32",
+        "Bruttoton": "43018",
+        "DWT": "81858"
+      },
+      "date_strings": []
+    },
+    {
+      "imo": "9783148",
+      "columns": [
+        "9783148"
+      ],
+      "fields": {
+        "IMO-nummer": "9783148",
+        "Ankommer från": null,
+        "Avgår till": null,
+        "Avsikt med besöket": null,
+        "Fartygstyp": null,
+        "Djupgående in": null,
+        "Djupgående ut": null,
+        "Flagg": null,
+        "Signal": null,
+        "Längd": null,
+        "Bredd": null,
+        "Bruttoton": null,
+        "DWT": null
+      },
+      "date_strings": []
+    }
+  ]
+}
