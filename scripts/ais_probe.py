@@ -22,7 +22,7 @@ async def main():
     seen=Counter()
     mmsi=set()
     started=datetime.now(timezone.utc)
-    async with websockets.connect(API,open_timeout=20,ping_interval=20) as ws:
+    async with websockets.connect(API,open_timeout=20,ping_interval=20,compression="deflate") as ws:
         await ws.send(json.dumps({"APIKey":key,"BoundingBoxes":[BOX],
             "FilterMessageTypes":["PositionReport","StandardClassBPositionReport"]}))
         loop=asyncio.get_running_loop()
