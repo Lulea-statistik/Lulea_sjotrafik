@@ -21,3 +21,11 @@
   are confirmed. Do not publish raw AIS feeds without permission.
 - GitHub Actions cron is approximate; runs can be delayed or skipped.
 - One daily snapshot may miss short stays, and the listing includes preliminary events.
+
+## AIS automatic pilot schedule (2026-10-14)
+- 90-second samples every hour at 06:13–17:13 UTC; additional samples at 00:13, 03:13, 18:13 and 21:13 UTC, 16 runs per day.
+- UTC times are fixed: in Swedish winter local time is UTC+1, in summer UTC+2. This prioritizes daytime but does **not** track actual sunrise or sunset; Lulea experiences large seasonal daylight variation.
+- Every successful sample uses its own timestamped file under `data/ais_probe/YYYY-MM-DD/` to prevent same-day overwrite.
+- Each sample stores only aggregated message counts and distinct MMSI count; no positions or individual MMSIs are stored.
+- Scheduled runs can be delayed or omitted by GitHub. The output is **sampling coverage**, not continuous vessel movement history.
+- Only expand to position history after coverage checks, source terms and any redistribution rights have been confirmed.
