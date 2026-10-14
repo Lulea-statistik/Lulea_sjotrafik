@@ -4,10 +4,13 @@ Datakällor:
 - [Luleå Hamns trafikinformation](https://portlulea.com/sjotjanster/trafikinformation/) – dagliga snapshots.
 - [AISStream](https://aisstream.io/documentation/) – valfri, manuell täckningskontroll (inte komplett AIS-historik).
 
+## Kryssningsfartyg
+Kryssningsanlöp hämtas varje dag från [hamnens kryssningssida](https://portlulea.com/sjotjanster/kryssningsfartyg/) och lagras separat i `data/cruise/raw/YYYY-MM-DD.html` och `data/cruise/snapshots/YYYY-MM-DD.json`. Uppgifterna är **planerade anlöp**, inte bekräftat genomförda besök. Återkommande fartyg med olika planerade besöksdatum är separata poster. Genom att bevara dagskopior kan ombokningar och inställda besök analyseras senare. Alla kommersiella hamnanlöp lagras separat. Dubbelräkning mellan de två källorna måste hanteras före eventuell sammanlagd statistik.
+
 ## Status
 GitHub Actions-arbetsflöden och insamlingsskript är installerade. **Den första framgångsrika körningen är ännu inte verifierad.** Därför ska datainsamlingen inte betraktas som aktiv och kvalitetssäkrad förrän en körning gett giltiga datafiler.
 
-- **Actions > Daily port snapshot > Run workflow:** hämtar källans aktuella tabell och arkiverar HTML och JSON i `data/raw/` och `data/snapshots/`. Schemalagd dagligen 05:17 UTC (07:17 svensk sommartid och 06:17 vintertid).
+- **Actions > Daily port snapshot > Run workflow:** hämtar både hamnens vanliga anlöpstabell och kryssningsplaneringen och arkiverar HTML och JSON i `data/raw/` och `data/snapshots/`. Schemalagd dagligen 05:17 UTC (07:17 svensk sommartid och 06:17 vintertid).
 - **Actions > AIS coverage pilot > Run workflow:** kräver en hemlig nyckel `AISSTREAM_API_KEY` under repo Settings > Secrets and variables > Actions. Samlar endast ett 90-sekunders aggregat av mottagna AIS-meddelanden, inte individuella positioner.
 - Läs [datamodell och begränsningar](docs/DATA_MODEL.md).
 
