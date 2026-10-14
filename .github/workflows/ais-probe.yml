@@ -1,6 +1,14 @@
 name: AIS coverage pilot
 on:
+  schedule:
+    # Daytime priority in UTC; daylight hours vary greatly in Lulea.
+    - cron: '13 6-17 * * *'
+    # Night observations prevent daytime-only sample bias.
+    - cron: '13 0,3,18,21 * * *'
   workflow_dispatch:
+concurrency:
+  group: lulea-ais-pilot
+  cancel-in-progress: false
 permissions:
   contents: write
 jobs:
