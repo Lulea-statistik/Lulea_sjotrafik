@@ -20,14 +20,15 @@
 <section id="diagram" class="panel"><h2>Diagram – fartygstrafik och planering</h2><p class="muted">Diagrammen visar poster från vald hamnlista och kryssningsplanering, inte bekräftade hamnanlöp.</p><div class="chart-grid"><div><h3>Status i hamnlistan</h3><div id="portStatusChart" class="stat-bars"></div></div><div><h3>Terminaler</h3><div id="portTerminalChart" class="stat-bars"></div></div><div><h3>Fartygstyper</h3><div id="portTypeChart" class="stat-bars"></div></div><div><h3>Planerade kryssningsanlöp per månad</h3><div id="cruiseMonthChart" class="stat-bars"></div></div></div></section><section id="ais" class="panel"><h2>AIS – provtagning och täckning</h2><p class="muted">AISStream-prover om 90 sekunder. Diagrammet visar mottagna positionsmeddelanden per prov, inte antal fartyg som passerat eller kontinuerlig täckning.</p><div class="split"><div><h3>Positionsmeddelanden per prov</h3><div id="aisBars" class="bars"><div class="empty">Laddar AIS-mätningar…</div></div></div><div><h3>Senaste prov</h3><div id="aisDetails" class="note">Laddar…</div><p class="muted">Tider i svensk lokal tid. Klass A och B summeras. Ett unikt MMSI per prov är inte ett unikt fartyg per dag.</p></div></div>
 <div class="scroll"><table><thead><tr><th>Provstart</th><th>Positionsmeddelanden</th><th>Unika MMSI</th><th>Mättid</th></tr></thead><tbody id="aisRows"></tbody></table></div></section>
 <section id="metod" class="panel"><h2>Metod och datakvalitet</h2><div class="split"><div><h3>Vad visar siffrorna?</h3><p>Hamndata samlas som dagliga snapshots från Luleå Hamns offentliga trafiklista. Samma fartyg kan synas i flera snapshots. Antalet poster är därför inte ett mått på antalet nya anlöp.</p><p>Kryssningskalendern innehåller planerade besök som kan flyttas eller ställas in. Dessa redovisas separat från andra fartyg.</p></div><div><h3>Vad visar inte AIS?</h3><p>AIS-mätningar är korta observationer. Att en mätning saknar rapporter innebär inte att området var tomt. Individuella fartygsspår lagras ännu inte i detta projekt.</p><p>Testområdet är en preliminär rektangel i WGS84 / EPSG:4326, inte Luleå kommuns eller hamnens officiella geografiska avgränsning.</p></div></div><p class="note">Datakällor: <a href="https://portlulea.com/sjotjanster/trafikinformation/">Luleå Hamn – trafikinformation</a>, <a href="https://portlulea.com/sjotjanster/kryssningsfartyg/">kryssningsfartyg</a>, <a href="https://aisstream.io/">AISStream</a>. Tjänsternas tillgänglighet, täckning och villkor kan påverka statistiken.</p></section>
-<div class="footer">Prototyp · <a href="https://github.com/Lulea-statistik/Lulea_sjotrafik">Källkod och datainsamling på GitHub</a> · Data laddas vid öppning från projektets publika GitHub-data.</div></main>
+<div class="footer">Prototyp · <a href="https://github.com/Lulea-statistik/Lulea_sjotrafik">Källkod och datainsamling på GitHub</a> · Data laddas från projektets publicerade GitHub Pages-arkiv.</div></main>
 <script>
 const OWNER='Lulea-statistik',REPO='Lulea_sjotrafik',BRANCH='main';
-const api=p=>'https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+p;
-const raw=p=>'https://raw.githubusercontent.com/'+OWNER+'/'+REPO+'/'+BRANCH+'/'+p;
+const raw=p=>p.startsWith('data/')?p:p;
+let dataManifest=null;
+const dataSection=folder=>folder==='data/snapshots'?'ships':folder==='data/cruise/snapshots'?'cruises':'ais';
 const el=id=>document.getElementById(id);let ships=[],cruises=[],ais=[];
 async function json(url){const r=await fetch(url,{cache:'no-cache'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
-async function list(path){return (await json(api(path))).filter(x=>x.type==='file'&&x.name.endsWith('.json')).map(x=>x.path).sort().reverse()}
+async function list(path){if(!dataManifest)throw Error('Dataförteckningen har inte laddats');return (dataManifest.datasets[dataSection(path)]||[]).map(x=>x.path)}
 function opts(id,values){el(id).replaceChildren(...values.map(v=>{const o=document.createElement('option');o.value=v;o.textContent=v.split('/').pop().replace('.json','');return o}))}
 function formatDate(v){if(!v)return '–';let d=new Date(String(v).replace(' ','T'));return isNaN(d)?String(v):new Intl.DateTimeFormat('sv-SE',{dateStyle:'short',timeStyle:'short'}).format(d)}
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -63,20 +64,30 @@ function renderCruiseChart(){
   return /^\\d{4}-\\d{2}$/.test(date)?date:'Okänt datum';
  }).sort((a,b)=>a[0].localeCompare(b[0])));
 }
-async function loadShips(path){try{const data=await json(raw(path));ships=data.records||[];el('countShips').textContent=ships.length;el('countArrived').textContent=ships.filter(x=>x.status==='Ankommit').length;el('shipStamp').textContent='Snapshot '+data.date;const statuses=[...new Set(ships.map(x=>x.status).filter(Boolean))].sort();opts('statusFilter',['',...statuses]);el('statusFilter').options[0].textContent='Alla statusar';renderShips();renderPortCharts()}catch(e){fail('shipRows',7,e)}}
-async function loadCruises(path){try{const data=await json(raw(path));cruises=data.records||[];el('countCruise').textContent=cruises.length;el('cruiseStamp').textContent='Snapshot '+data.date;renderCruises();renderCruiseChart()}catch(e){fail('cruiseRows',6,e)}}
+async function loadShips(path){try{const data=await json(raw(path));ships=data.records||[];el('countShips').textContent=ships.length;el('countArrived').textContent=ships.filter(x=>x.status==='Ankommit').length;el('shipStamp').textContent='Senast insamlat: '+formatDate(data.collected_at||data.date);const statuses=[...new Set(ships.map(x=>x.status).filter(Boolean))].sort();opts('statusFilter',['',...statuses]);el('statusFilter').options[0].textContent='Alla statusar';renderShips();renderPortCharts()}catch(e){fail('shipRows',7,e)}}
+async function loadCruises(path){try{const data=await json(raw(path));cruises=data.records||[];el('countCruise').textContent=cruises.length;el('cruiseStamp').textContent='Senast insamlat: '+formatDate(data.collected_at||data.date);renderCruises();renderCruiseChart()}catch(e){fail('cruiseRows',6,e)}}
 async function loadAis(){try{
-  const roots=await json(api('data/ais_probe'));const old=roots.filter(x=>x.type==='file'&&x.name.endsWith('.json')).map(x=>x.path);
-  const dirs=roots.filter(x=>x.type==='dir').sort((a,b)=>b.name.localeCompare(a.name)).slice(0,10);
-  let paths=[...old];for(const d of dirs){try{paths.push(...await list(d.path))}catch(e){console.warn('AIS folder',e)}}
-  const loaded=await Promise.allSettled(paths.slice(-100).map(p=>json(raw(p))));ais=loaded.filter(x=>x.status==='fulfilled').map(x=>x.value).sort((a,b)=>a.sample_started_utc.localeCompare(b.sample_started_utc));
-  el('countAis').textContent=ais.length;el('aisStamp').textContent='Sparade prov';
+  const paths=await list('data/ais_probe');
+  if(!paths.length)throw Error('Inga publicerade AIS-prov finns');
+  const loaded=await Promise.allSettled(paths.slice(0,100).map(p=>json(raw(p))));ais=loaded.filter(x=>x.status==='fulfilled').map(x=>x.value).sort((a,b)=>a.sample_started_utc.localeCompare(b.sample_started_utc));
+  el('countAis').textContent=ais.length;el('aisStamp').textContent='Senaste prov: '+(ais.length?formatDate(ais.at(-1).sample_started_utc):'inga');
   const recent=ais.slice(-24),max=Math.max(1,...recent.map(x=>(x.message_counts?.PositionReport||0)+(x.message_counts?.StandardClassBPositionReport||0)));
   fill('aisBars',recent.length?recent.map((x,i)=>{const n=(x.message_counts?.PositionReport||0)+(x.message_counts?.StandardClassBPositionReport||0);return '<div class="bar" style="height:'+Math.max(4,Math.round(n/max*155))+'px" title="'+esc(formatDate(x.sample_started_utc))+' – '+n+' positioner"><span>'+(i%Math.max(1,Math.ceil(recent.length/8))===0?new Intl.DateTimeFormat('sv-SE',{hour:'2-digit',minute:'2-digit'}).format(new Date(x.sample_started_utc)):'')+'</span></div>'}).join(''):'<div class="empty">Inga AIS-prov hittades</div>');
   const latest=ais.at(-1);el('aisDetails').textContent=latest?'Start: '+formatDate(latest.sample_started_utc)+' · '+latest.unique_mmsi_count+' unika MMSI · '+((latest.message_counts?.PositionReport||0)+(latest.message_counts?.StandardClassBPositionReport||0))+' positionsrapporter':'Inga mätningar';
   fill('aisRows',recent.slice().reverse().map(x=>'<tr><td>'+safe(formatDate(x.sample_started_utc))+'</td><td>'+((x.message_counts?.PositionReport||0)+(x.message_counts?.StandardClassBPositionReport||0))+'</td><td>'+safe(x.unique_mmsi_count)+'</td><td>'+safe(x.sample_seconds)+' sekunder</td></tr>').join(''));
 }catch(e){el('aisDetails').textContent='AIS-data kunde inte laddas: '+e.message;fill('aisBars','<div class="empty">AIS-data saknas</div>')}}
 async function init(){
+  try{
+    dataManifest=await json('data/manifest.json?v='+Date.now());
+    if(!dataManifest.datasets)throw Error('Ogiltig dataförteckning');
+  }catch(e){
+    for(const [id,count] of [['shipRows',7],['cruiseRows',6]])fail(id,count,e);
+    el('aisDetails').textContent='Dataförteckningen kunde inte laddas: '+e.message;
+    el('shipStamp').textContent='Datakälla otillgänglig';
+    el('cruiseStamp').textContent='Datakälla otillgänglig';
+    el('aisStamp').textContent='Datakälla otillgänglig';
+    return;
+  }
   for(const [folder,selector,loader] of [['data/snapshots','shipDay',loadShips],['data/cruise/snapshots','cruiseDay',loadCruises]]){
     try{const paths=await list(folder);if(!paths.length)throw Error('Inga snapshots');opts(selector,paths);el(selector).addEventListener('change',e=>loader(e.target.value));await loader(paths[0])}
     catch(e){if(selector==='shipDay')fail('shipRows',7,e);else fail('cruiseRows',6,e);el(selector).replaceChildren()}}
