@@ -1,0 +1,71 @@
+{
+  "generated_at_utc": "2026-10-15T20:20:50.790368+00:00",
+  "datasets": {
+    "ships": [
+      {
+        "path": "data/snapshots/2026-10-15.json",
+        "date": "2026-10-15",
+        "count": 21
+      },
+      {
+        "path": "data/snapshots/2026-10-14.json",
+        "date": "2026-10-14",
+        "count": 19
+      }
+    ],
+    "cruises": [
+      {
+        "path": "data/cruise/snapshots/2026-10-15.json",
+        "date": "2026-10-15",
+        "count": 11
+      },
+      {
+        "path": "data/cruise/snapshots/2026-10-14.json",
+        "date": "2026-10-14",
+        "count": 11
+      }
+    ],
+    "ais": [
+      {
+        "path": "data/ais_probe/2026-10-15/2026-10-15T20-19-17Z.json",
+        "date": "2026-10-15T20:19:17.985310+00:00",
+        "count": null
+      },
+      {
+        "path": "data/ais_probe/2026-10-15/2026-10-15T16-56-00Z.json",
+        "date": "2026-10-15T16:56:00.389602+00:00",
+        "count": null
+      },
+      {
+        "path": "data/ais_probe/2026-10-15/2026-10-15T11-22-16Z.json",
+        "date": "2026-10-15T11:22:16.004559+00:00",
+        "count": null
+      },
+      {
+        "path": "data/ais_probe/2026-10-15/2026-10-15T04-40-41Z.json",
+        "date": "2026-10-15T04:40:41.157902+00:00",
+        "count": null
+      },
+      {
+        "path": "data/ais_probe/2026-10-14.json",
+        "date": "2026-10-14T15:38:13.760906+00:00",
+        "count": null
+      },
+      {
+        "path": "data/ais_probe/2026-10-14/2026-10-14T21-42-26Z.json",
+        "date": "2026-10-14T21:42:26.388792+00:00",
+        "count": null
+      },
+      {
+        "path": "data/ais_probe/2026-10-14/2026-10-14T20-11-12Z.json",
+        "date": "2026-10-14T20:11:12.189561+00:00",
+        "count": null
+      },
+      {
+        "path": "data/ais_probe/2026-10-14/2026-10-14T15-53-15Z.json",
+        "date": "2026-10-14T15:53:15.212234+00:00",
+        "count": null
+      }
+    ]
+  }
+}
