@@ -1,0 +1,22 @@
+{
+  "sample_started_utc": "2026-10-16T11:17:15.860162+00:00",
+  "sample_seconds": 90,
+  "sampling_hour_utc": 11,
+  "bbox_wgs84_latlon": [
+    [
+      65.35,
+      21.4
+    ],
+    [
+      65.85,
+      23.0
+    ]
+  ],
+  "message_counts": {
+    "SubscriptionConfirmation": 1,
+    "PositionReport": 5,
+    "StandardClassBPositionReport": 2
+  },
+  "unique_mmsi_count": 7,
+  "warning": "Sample coverage only; not continuous AIS history"
+}
