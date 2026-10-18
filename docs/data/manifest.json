@@ -1,7 +1,12 @@
 {
-  "generated_at_utc": "2026-10-18T04:37:09.495917+00:00",
+  "generated_at_utc": "2026-10-18T09:41:45.521222+00:00",
   "datasets": {
     "ships": [
+      {
+        "path": "data/snapshots/2026-10-18.json",
+        "date": "2026-10-18",
+        "count": 12
+      },
       {
         "path": "data/snapshots/2026-10-17.json",
         "date": "2026-10-17",
@@ -24,6 +29,11 @@
       }
     ],
     "cruises": [
+      {
+        "path": "data/cruise/snapshots/2026-10-18.json",
+        "date": "2026-10-18",
+        "count": 11
+      },
       {
         "path": "data/cruise/snapshots/2026-10-17.json",
         "date": "2026-10-17",
