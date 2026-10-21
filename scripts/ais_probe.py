@@ -14,7 +14,8 @@ from pathlib import Path
 import requests
 import websockets
 from shapely.geometry import Point, shape
-from shapely.ops import unary_union, transform
+from shapely.ops import unary_union
+from shapely import transform
 from pyproj import Transformer
 
 API = "wss://stream.aisstream.io/v0/stream"
