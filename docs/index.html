@@ -10,7 +10,14 @@
 body{font-family:var(--font-body)}
 h1,h2,h3,h4,h5,h6,a,nav a{font-family:var(--font-heading)}
 button,input,select,textarea,table{font-family:var(--font-body)}
-</style><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzxCj9M1c25zB+C2Zc7CReJxY=" crossorigin=""></head>
+/* Kartans lager maste alltid klippas till kartytan, aven om Leaflet-CSS inte laddas. */
+#aisMapPanel,#aisMapPanel .ais-area-map{min-width:0}
+#aisCoverageMap{position:relative;display:block;width:100%;height:370px;overflow:hidden;isolation:isolate;background:#eef4f5}
+#aisCoverageMap .leaflet-pane,#aisCoverageMap .leaflet-map-pane,#aisCoverageMap .leaflet-tile-container,#aisCoverageMap .leaflet-overlay-pane,#aisCoverageMap .leaflet-control-container{position:absolute;top:0;left:0}
+#aisCoverageMap .leaflet-pane{width:100%;height:100%}
+#aisCoverageMap .leaflet-tile{position:absolute;left:0;top:0;max-width:none;max-height:none}
+#aisCoverageMap .leaflet-control-container{z-index:1000}
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"></head>
 <body><header><div class="eyebrow">Luleå kommun · Sjötrafik</div><h1>Fartyg, anlöp och rörelser</h1><p>En datadriven översikt över Luleå Hamns fartygstrafik, planerade kryssningsanlöp och AIS-täckning. Prototyp med automatiskt insamlade observationer.</p><nav><a href="#trafik">Hamnanlöp</a><a href="#kryssning">Kryssningsfartyg</a><a href="#diagram">Diagram</a><a href="#ais">AIS-mätningar</a><a href="#metod">Metod & data</a></nav></header>
 <main class="wrap"><div class="summary">
 <div class="metric"><span>Poster i senaste hamnlistan</span><strong id="countShips">–</strong><small id="shipStamp">Laddar</small></div>
