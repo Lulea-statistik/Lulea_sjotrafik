@@ -14,7 +14,8 @@ from pathlib import Path
 import requests
 import websockets
 from shapely.geometry import Point, shape
-from shapely.ops import unary_union
+from shapely.ops import unary_union, transform
+from pyproj import Transformer
 
 API = "wss://stream.aisstream.io/v0/stream"
 GEO_URL = ("https://raw.githubusercontent.com/Lulea-statistik/"
@@ -63,6 +64,10 @@ async def main():
     sea, box = load_marine_polygon()
     seen = Counter()
     mmsi = set()
+    position_quality = {}
+    to_metric = Transformer.from_crs("EPSG:4326", "EPSG:3006", always_xy=True)
+    sea_metric = transform(sea, to_metric.transform, interleaved=False)
+    sea_edge = sea_metric.boundary
     rejected = Counter()
     started = datetime.now(timezone.utc)
     async with websockets.connect(API, open_timeout=20, ping_interval=20, compression="deflate") as ws:
@@ -80,14 +85,23 @@ async def main():
             if p is None:
                 rejected["missing_position"] += 1
                 continue
-            if not sea.covers(p):
+            is_inside = sea.covers(p)
+            metric_point = transform(p, to_metric.transform, interleaved=False)
+            is_boundary = metric_point.distance(sea_edge) <= 30
+            if not is_inside:
                 rejected["outside_marine_polygon"] += 1
+                if is_boundary:
+                    rejected["outside_within_30m"] += 1
                 continue
             typ = item.get("MessageType", "unknown")
             seen[typ] += 1
             meta = item.get("MetaData") or {}
             if meta.get("MMSI"):
-                mmsi.add(str(meta["MMSI"]))
+                ident = str(meta["MMSI"])
+                mmsi.add(ident)
+                quality = "uncertain_boundary" if is_boundary else "safe_marine"
+                if ident not in position_quality or quality == "safe_marine":
+                    position_quality[ident] = quality
     day = started.date().isoformat()
     stamp = started.strftime("%Y-%m-%dT%H-%M-%SZ")
     result = {
@@ -100,6 +114,12 @@ async def main():
         "message_counts": dict(seen),
         "unique_mmsi_count": len(mmsi),
         "rejected_message_counts": dict(rejected),
+        "quality_margin_m": 30,
+        "quality_classification_crs": "EPSG:3006",
+        "quality_unique_mmsi": dict(Counter(position_quality.values())),
+        "quality_summary": ("uncertain_boundary" if "uncertain_boundary" in position_quality.values()
+                            else "safe_marine" if mmsi
+                            else "outside_marine" if rejected["outside_marine_polygon"] else "no_positions"),
         "warning": "Only received positions within NMD marine water; not continuous vessel coverage"
     }
     (OUT/day).mkdir(parents=True, exist_ok=True)
