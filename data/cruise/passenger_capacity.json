@@ -1,0 +1,30 @@
+{
+  "updated_at": "2026-10-22",
+  "method": "Published vessel capacity; standard = commonly published guest capacity, max only when independently verifiable",
+  "vessels": [
+    {
+      "vessel": "HANSEATIC NATURE",
+      "imo": "9817133",
+      "normal_passengers": 230,
+      "max_passengers": 230,
+      "source": "https://www.fincantieri.com/en/business/products/cruise-ships/Hanseatic-Nature",
+      "note": "230 total published guest capacity; 199 for Antarctica/Svalbard operations; no separate larger maximum verified"
+    },
+    {
+      "vessel": "LE COMMANDANT CHARCOT",
+      "imo": "9846249",
+      "normal_passengers": 245,
+      "max_passengers": 245,
+      "source": "https://en.ponant.com/cruise-ships/le-commandant-charcot",
+      "note": "245 published maximum guests; operator does not publish separate normal capacity"
+    },
+    {
+      "vessel": "SPITSBERGEN",
+      "imo": null,
+      "normal_passengers": 335,
+      "max_passengers": 335,
+      "source": "https://kryssningscenter.se/rederier/hx-hurtigruten-expeditions/spitsbergen/",
+      "note": "335 published passenger figure; no separate higher maximum verified"
+    }
+  ]
+}
