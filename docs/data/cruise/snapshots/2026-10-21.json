@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-21",
+  "collected_at": "2026-10-21T12:16:38.057708+02:00",
+  "source": "https://portlulea.com/sjotjanster/kryssningsfartyg/",
+  "count": 11,
+  "records": [
+    {
+      "source_type": "cruise",
+      "planned_arrival": "2026-12-27 08:00",
+      "planned_departure": "2026-12-27 17:45",
+      "vessel": "HANSEATIC NATURE",
+      "terminal": "Svartökajen",
+      "origin": "Kemi",
+      "destination": "Holmsund",
+      "status": "planned"
+    },
+    {
+      "source_type": "cruise",
+      "planned_arrival": "2026-12-28 08:00",
+      "planned_departure": "2026-12-28 22:00",
+      "vessel": "Le Commandant Charcot",
+      "terminal": "Svartökajen",
+      "origin": "Oulu",
+      "destination": "",
+      "status": "planned"
+    },
+    {
+      "source_type": "cruise",
+      "planned_arrival": "2027-01-02 08:00",
+      "planned_departure": "2027-01-02 20:00",
+      "vessel": "Le Commandant Charcot",
+      "terminal": "Svartökajen",
+      "origin": "",
+      "destination": "",
+      "status": "planned"
+    },
+    {
+      "source_type": "cruise",
+      "planned_arrival": "2027-01-10 14:00",
+      "planned_departure": "2027-01-12 13:45",
+      "vessel": "HANSEATIC NATURE",
+      "terminal": "Svartökajen",
+      "origin": "Stockholm",
+      "destination": "Kemi",
+      "status": "planned"
+    },
+    {
+      "source_type": "cruise",
+      "planned_arrival": "2027-01-13 08:00",
+      "planned_departure": "2027-01-13 22:00",
+      "vessel": "Le Commandant Charcot",
+      "terminal": "Svartökajen",
+      "origin": "",
+      "destination": "",
+      "status": "planned"
+    },
+    {
+      "source_type": "cruise",
+      "planned_arrival": "2027-01-18 08:00",
+      "planned_departure": "2027-01-18 20:00",
+      "vessel": "Le Commandant Charcot",
+      "terminal": "Svartökajen",
+      "origin": "",
+      "destination": "",
+      "status": "planned"
+    },
+    {
+      "source_type": "cruise",
+      "planned_arrival": "2027-09-24 08:00",
+      "planned_departure": "2027-09-25 05:30",
+      "vessel": "HANSEATIC NATURE",
+      "terminal": "Södra Hamn",
+      "origin": "Harnosand",
+      "destination": "Kemi",
+      "status": "planned"
+    },
+    {
+      "source_type": "cruise",
+      "planned_arrival": "2028-10-17 08:00",
+      "planned_departure": "2028-10-17 16:00",
+      "vessel": "SPITSBERGEN",
+      "terminal": "Södra Hamn",
+      "origin": "",
+      "destination": "",
+      "status": "planned"
+    },
+    {
+      "source_type": "cruise",
+      "planned_arrival": "2028-10-23 12:00",
+      "planned_departure": "2028-10-23 22:00",
+      "vessel": "SPITSBERGEN",
+      "terminal": "Södra Hamn",
+      "origin": "",
+      "destination": "",
+      "status": "planned"
+    },
+    {
+      "source_type": "cruise",
+      "planned_arrival": "2028-12-27 03:00",
+      "planned_departure": "2028-12-27 18:00",
+      "vessel": "HANSEATIC NATURE",
+      "terminal": "Svartökajen",
+      "origin": "",
+      "destination": "",
+      "status": "planned"
+    },
+    {
+      "source_type": "cruise",
+      "planned_arrival": "2029-01-09 08:00",
+      "planned_departure": "2029-01-11 16:00",
+      "vessel": "HANSEATIC NATURE",
+      "terminal": "Svartökajen",
+      "origin": "Skagen",
+      "destination": "Skagen",
+      "status": "planned"
+    }
+  ]
+}
