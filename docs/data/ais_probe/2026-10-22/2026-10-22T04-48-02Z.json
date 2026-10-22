@@ -1,0 +1,35 @@
+{
+  "sample_started_utc": "2026-10-22T04:48:02.504509+00:00",
+  "sample_seconds": 90,
+  "sampling_hour_utc": 4,
+  "bbox_wgs84_latlon": [
+    [
+      65.06965380799399,
+      21.839856129726588
+    ],
+    [
+      65.87367143140983,
+      23.1383421263494
+    ]
+  ],
+  "geographic_filter": "lulea_nmd_marine_v1",
+  "geographic_filter_source": "https://raw.githubusercontent.com/Lulea-statistik/SMHI_Lulea-Kallax_weather-climate/main/data/lightning/geography_nmd.geojson",
+  "message_counts": {
+    "PositionReport": 10,
+    "StandardClassBPositionReport": 2
+  },
+  "unique_mmsi_count": 11,
+  "rejected_message_counts": {
+    "missing_position": 1,
+    "outside_marine_polygon": 5,
+    "outside_within_30m": 1
+  },
+  "quality_margin_m": 30,
+  "quality_classification_crs": "EPSG:3006",
+  "quality_unique_mmsi": {
+    "safe_marine": 9,
+    "uncertain_boundary": 2
+  },
+  "quality_summary": "uncertain_boundary",
+  "warning": "Only received positions within NMD marine water; not continuous vessel coverage"
+}
