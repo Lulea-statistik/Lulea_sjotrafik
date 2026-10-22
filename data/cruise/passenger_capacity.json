@@ -1,30 +1,38 @@
 {
   "updated_at": "2026-10-22",
-  "method": "Published vessel capacity; standard = commonly published guest capacity, max only when independently verifiable",
+  "method": "Current published passenger capacity and route-dependent lower levels. Historical design figures kept separately, never interpreted as current maximum.",
   "vessels": [
     {
       "vessel": "HANSEATIC NATURE",
       "imo": "9817133",
       "normal_passengers": 230,
       "max_passengers": 230,
-      "source": "https://www.fincantieri.com/en/business/products/cruise-ships/Hanseatic-Nature",
-      "note": "230 total published guest capacity; 199 for Antarctica/Svalbard operations; no separate larger maximum verified"
+      "source": "https://www.polar.reisen/hapagexped?lang=en",
+      "note": "230 total published guest capacity; 199 for Antarctica/Svalbard operations; no separate larger maximum verified",
+      "lower_passengers": 199,
+      "capacity_basis": "199 vid Antarktis/Svalbard; 230 vid övriga resor"
     },
     {
       "vessel": "LE COMMANDANT CHARCOT",
       "imo": "9846249",
       "normal_passengers": 245,
       "max_passengers": 245,
-      "source": "https://en.ponant.com/cruise-ships/le-commandant-charcot",
-      "note": "245 published maximum guests; operator does not publish separate normal capacity"
+      "source": "https://www.antarcticacruises.com/ships/le-commandant-charcot",
+      "note": "245 published maximum guests; operator does not publish separate normal capacity",
+      "lower_passengers": 200,
+      "capacity_basis": "200 vid Antarktisresor; 245 annars"
     },
     {
       "vessel": "SPITSBERGEN",
       "imo": null,
-      "normal_passengers": 335,
-      "max_passengers": 335,
-      "source": "https://kryssningscenter.se/rederier/hx-hurtigruten-expeditions/spitsbergen/",
-      "note": "335 published passenger figure; no separate higher maximum verified"
+      "normal_passengers": 150,
+      "max_passengers": null,
+      "source": "https://www.travelhx.com/en/ships/spitsbergen/",
+      "note": "335 published passenger figure; no separate higher maximum verified",
+      "lower_passengers": null,
+      "capacity_basis": "150 enligt rederiets aktuella specifikation efter ombyggnad 2025; äldre uppgift 335 ej jämförbar",
+      "historical_capacity": 335,
+      "historical_source": "https://www.knudehansen.com/wp-content/uploads/2017/10/Article_Spitsbergen_Shippax_Design.pdf"
     }
   ]
 }
