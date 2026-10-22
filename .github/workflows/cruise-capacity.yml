@@ -18,11 +18,15 @@ jobs:
           python-version: "3.12"
       - run: pip install requests beautifulsoup4
       - run: python scripts/update_cruise_capacity.py
+      - name: Publish capacity data for GitHub Pages
+        run: |
+          mkdir -p docs/data/cruise
+          cp data/cruise/passenger_capacity.json docs/data/cruise/passenger_capacity.json
       - name: Commit verified metadata and source availability
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/cruise/passenger_capacity.json
+          git add data/cruise/passenger_capacity.json docs/data/cruise/passenger_capacity.json
           if ! git diff --cached --quiet; then
             git commit -m "Kontrollera kryssningsfartygens kapacitet"
             git pull --rebase origin main
