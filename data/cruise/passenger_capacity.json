@@ -10,7 +10,9 @@
       "source": "https://www.polar.reisen/hapagexped?lang=en",
       "note": "230 total published guest capacity; 199 for Antarctica/Svalbard operations; no separate larger maximum verified",
       "lower_passengers": 199,
-      "capacity_basis": "199 vid Antarktis/Svalbard; 230 vid övriga resor"
+      "capacity_basis": "199 vid Antarktis/Svalbard; 230 vid övriga resor",
+      "source_check": "pass",
+      "source_checked_at": "2026-10-22"
     },
     {
       "vessel": "LE COMMANDANT CHARCOT",
@@ -20,7 +22,9 @@
       "source": "https://www.antarcticacruises.com/ships/le-commandant-charcot",
       "note": "245 published maximum guests; operator does not publish separate normal capacity",
       "lower_passengers": 200,
-      "capacity_basis": "200 vid Antarktisresor; 245 annars"
+      "capacity_basis": "200 vid Antarktisresor; 245 annars",
+      "source_check": "pass",
+      "source_checked_at": "2026-10-22"
     },
     {
       "vessel": "SPITSBERGEN",
@@ -32,7 +36,9 @@
       "lower_passengers": null,
       "capacity_basis": "150 enligt rederiets aktuella specifikation efter ombyggnad 2025; äldre uppgift 335 ej jämförbar",
       "historical_capacity": 335,
-      "historical_source": "https://www.knudehansen.com/wp-content/uploads/2017/10/Article_Spitsbergen_Shippax_Design.pdf"
+      "historical_source": "https://www.knudehansen.com/wp-content/uploads/2017/10/Article_Spitsbergen_Shippax_Design.pdf",
+      "source_check": "pass",
+      "source_checked_at": "2026-10-22"
     }
   ]
 }
