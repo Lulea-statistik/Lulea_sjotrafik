@@ -65,6 +65,8 @@ async def main():
     sea, box = load_marine_polygon()
     seen = Counter()
     mmsi = set()
+    rectangle_seen = Counter()
+    rectangle_mmsi = set()
     position_quality = {}
     to_metric = Transformer.from_crs("EPSG:4326", "EPSG:3006", always_xy=True)
     sea_metric = transform(sea, to_metric.transform, interleaved=False)
@@ -86,6 +88,11 @@ async def main():
             if p is None:
                 rejected["missing_position"] += 1
                 continue
+            typ = item.get("MessageType", "unknown")
+            rectangle_seen[typ] += 1
+            meta = item.get("MetaData") or {}
+            if meta.get("MMSI"):
+                rectangle_mmsi.add(str(meta["MMSI"]))
             is_inside = sea.covers(p)
             metric_point = transform(p, to_metric.transform, interleaved=False)
             is_boundary = metric_point.distance(sea_edge) <= 30
@@ -113,6 +120,15 @@ async def main():
         "geographic_filter": "lulea_nmd_marine_v1",
         "geographic_filter_source": GEO_URL,
         "message_counts": dict(seen),
+        "parallel_comparison": {
+            "rectangle_message_counts": dict(rectangle_seen),
+            "rectangle_unique_mmsi_count": len(rectangle_mmsi),
+            "marine_message_counts": dict(seen),
+            "marine_unique_mmsi_count": len(mmsi),
+            "difference_unique_mmsi_count": len(rectangle_mmsi) - len(mmsi),
+            "sample_basis": "same 90-second AISStream subscription and position messages",
+            "method": "rectangle counts all valid positions; marine counts those covered by NMD polygon"
+        },
         "unique_mmsi_count": len(mmsi),
         "rejected_message_counts": dict(rejected),
         "quality_margin_m": 30,
