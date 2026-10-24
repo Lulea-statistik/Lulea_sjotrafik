@@ -1,10 +1,10 @@
 {
   "period_start_inclusive": "2026-10-22",
   "period_end_exclusive": "2026-11-05",
-  "samples": 10,
-  "paired_rectangle_mmsi_sum": 47,
-  "paired_marine_mmsi_sum": 41,
-  "summed_mmsi_difference_pct": 12.77,
+  "samples": 11,
+  "paired_rectangle_mmsi_sum": 51,
+  "paired_marine_mmsi_sum": 44,
+  "summed_mmsi_difference_pct": 13.73,
   "note": "Summed per-sample MMSI are not unique vessels across the test period. Both methods use the same sample windows.",
-  "generated_at_utc": "2026-10-24T04:39:38.633860+00:00"
+  "generated_at_utc": "2026-10-24T10:54:33.660181+00:00"
 }
