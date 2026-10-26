@@ -1,0 +1,20 @@
+name: Test AIS hourly averages
+on:
+  pull_request:
+    paths:
+      - docs/index.html
+      - docs/ais-hourly-average.js
+      - tests/ais-hourly-average.test.cjs
+      - .github/workflows/test-ais-hourly-average.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/ais-hourly-average.test.cjs
