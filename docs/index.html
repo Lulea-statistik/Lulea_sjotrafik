@@ -217,7 +217,7 @@ async function loadAllShipSnapshots(){
  renderShips();renderFutureArrivals();
 }
 async function selectShipSnapshot(value){if(value==='ALL'){try{await loadAllShipSnapshots()}catch(e){fail('shipRows',8,e)}}else await loadShips(value)}
-async function loadShips(path){try{const data=await json(raw(path));ships=data.records||[];el('countShips').textContent=ships.length;el('countArrived').textContent=ships.filter(x=>x.status==='Ankommit').length;el('shipStamp').textContent='Senast insamlat: '+formatDate(data.collected_at||data.date);const statuses=[...new Set(ships.map(x=>x.status).filter(Boolean))].sort();opts('statusFilter',['',...statuses]);el('statusFilter').options[0].textContent='Alla statusar';renderShips();renderPortCharts();renderFutureArrivals()}catch(e){fail('shipRows',8,e)}}
+async function loadShips(path){try{const data=await json(raw(path));ships=data.records||[];el('countShips').textContent=ships.length;el('countArrived').textContent=ships.filter(x=>x.status==='Ankommit').length;el('shipStamp').textContent='Senast insamlat: '+formatDate(data.collected_at||data.date);const statuses=[...new Set(ships.map(x=>x.status).filter(Boolean))].sort();opts('statusFilter',['',...statuses]);el('statusFilter').options[0].textContent='Alla statusar';renderShips();renderFutureArrivals()}catch(e){fail('shipRows',8,e)}}
 async function loadCruises(path){try{const data=await json(raw(path));cruises=data.records||[];el('countCruise').textContent=cruises.length;el('cruiseStamp').textContent='Senast insamlat: '+formatDate(data.collected_at||data.date);renderCruises();renderFutureArrivals()}catch(e){fail('cruiseRows',8,e)}}
 async function loadAis(){try{
   const paths=await list('data/ais_probe');
