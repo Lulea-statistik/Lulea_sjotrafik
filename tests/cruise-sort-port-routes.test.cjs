@@ -1,0 +1,4 @@
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');const html=fs.readFileSync('docs/index.html','utf8');const script=html.match(/<script>([\s\S]*?)<\/script>/)?.[1];
+test('inline JS compiles',()=>{assert.ok(script);new Function(script)});
+test('cruise columns have sortable accessible headers',()=>{for(const key of ['flag','vessel','capacity','arrival','departure','terminal','origin','destination'])assert.match(html,new RegExp('data-cruise-sort="'+key+'"'));assert.match(script,/function chooseCruiseSort/);assert.match(script,/sortCruiseRows/);assert.match(script,/keydown/)});
+test('route chart aggregates from ship origin and destination',()=>{assert.match(html,/id="portRoutesChart"/);assert.match(script,/chartCounts\(ships\.filter/);assert.match(script,/Ankommer från/);assert.match(script,/Avgår till/);assert.match(script,/\.slice\(0,15\)/)});
