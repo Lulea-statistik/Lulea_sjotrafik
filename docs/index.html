@@ -121,7 +121,7 @@ function renderPortCharts(){
 function renderCruiseChart(){
  drawStatBars('cruiseMonthChart',chartCounts(historicalCruises,x=>{
   const date=String(x.planned_arrival||'').slice(0,7);
-  return /^\\d{4}-\\d{2}$/.test(date)?date:'Okänt datum';
+  return /^[0-9]{4}-[0-9]{2}$/.test(date)?date:'Okänt datum';
  }).sort((a,b)=>a[0].localeCompare(b[0])));
 }
 async function loadHistoricalCharts(){
