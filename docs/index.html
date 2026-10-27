@@ -32,7 +32,7 @@ button,input,select,textarea,table{font-family:var(--font-body)}
 <div class="scroll"><table><thead><tr><th class="flag-col" data-cruise-sort="flag" tabindex="0" role="button" aria-sort="none">Flagg</th><th data-cruise-sort="vessel" tabindex="0" role="button" aria-sort="none">Fartyg</th><th data-cruise-sort="capacity" tabindex="0" role="button" aria-sort="none">Passagerarkapacitet</th><th data-cruise-sort="arrival" tabindex="0" role="button" aria-sort="none">Planerad ankomst</th><th data-cruise-sort="departure" tabindex="0" role="button" aria-sort="none">Planerad avgång</th><th data-cruise-sort="terminal" tabindex="0" role="button" aria-sort="none">Terminal</th><th data-cruise-sort="origin" tabindex="0" role="button" aria-sort="none">Föregående hamn</th><th data-cruise-sort="destination" tabindex="0" role="button" aria-sort="none">Nästa hamn</th></tr></thead><tbody id="cruiseRows"><tr><td colspan="8" class="empty">Laddar kryssningsanlöp…</td></tr></tbody></table></div><p id="cruiseResult" class="muted"></p></section>
 <section id="future" class="panel"><h2>Planerade ankomster – kommande 24 månader</h2><p class="muted">Antal <strong>registrerade planerade besök</strong> efter ankomstmånad i senast insamlade hamnlista och kryssningskalender. Saknade eller tomma framtida månader betyder inte att inga fartyg kommer. Källorna visas separat för att undvika obekräftad sammanslagning.</p><div id="futureStamp" class="muted">Laddar planeringsunderlag…</div><div class="future-legend"><span>■ Kommersiella (trafiklista)</span><span>■ Kryssningar (planering)</span></div><div id="futureBars" class="future-bars" role="img" aria-label="Registrerade planerade fartygsankomster per månad kommande 24 månader"></div><p id="futureNote" class="muted"></p></section>
 <section id="aisTrendPanel" class="panel"><h2>AIS – unika MMSI inom Luleås havsområde, upp till 16 stickprov per dygn</h2><p class="muted"><strong>Observera:</strong> Diagrammet redovisar äldre rektangelbaserade och nyare havspolygonfiltrerade stickprov med träffar. Metodskiftet kan påverka jämförbarheten. Linjen visar unika MMSI:er under enskilda 90-sekundersprov i ett preliminärt rektangulärt täckningsområde.</p><div id="aisTrend" class="ais-trend"></div><p id="aisTrendNote" class="muted"></p></section>
-<section id="diagram" class="panel"><h2>Diagram – fartygstrafik och planering</h2><p class="muted">Diagrammen visar poster från vald hamnlista och kryssningsplanering, inte bekräftade hamnanlöp.</p><div class="chart-grid"><div><h3>Status i hamnlistan</h3><div id="portStatusChart" class="stat-bars"></div></div><div><h3>Terminaler</h3><div id="portTerminalChart" class="stat-bars"></div></div><div><h3>Fartygstyper</h3><div id="portTypeChart" class="stat-bars"></div></div><div><h3>Vanligaste rutterna – från → till</h3><p class="muted">Hamnlistans uppgifter om föregående och nästa hamn. Antal poster i vald Snapshot; samma fartyg kan förekomma på flera datum om Alla datum väljs.</p><div id="portRoutesChart" class="stat-bars"></div></div><div><h3>Planerade kryssningsanlöp per månad</h3><div id="cruiseMonthChart" class="stat-bars"></div></div></div></section><section id="ais" class="panel"><h2>AIS – provtagning och täckning</h2><p class="muted">AISStream-prover om 90 sekunder, inklusive äldre prov med rektangulärt geografiskt urval. Metodskiftet kan påverka nivåerna. Diagrammet visar mottagna positionsmeddelanden per prov, inte antal fartyg som passerat eller kontinuerlig täckning.</p><div class="split"><div><h3>Genomsnittligt antal positionsmeddelanden per klockslag</h3><div style="overflow-x:auto"><div id="aisBars" class="bars" style="min-width:720px"><div class="empty">Laddar AIS-mätningar…</div></div></div><p class="muted">Svensk lokal tid (00–23). Medelvärde per 90-sekundersprov för varje timme med mätningar. Siffran ovanför varje stapel anger antal prov. Timmar utan prov markeras som saknade, inte noll. Äldre och nyare geografiska metoder kan skilja sig.</p></div><div><h3>Senaste prov</h3><div id="aisDetails" class="note">Laddar…</div><p class="muted">Tider i svensk lokal tid. Klass A och B summeras. Ett unikt MMSI per prov är inte ett unikt fartyg per dag.</p></div></div>
+<section id="diagram" class="panel"><h2>Diagram – fartygstrafik och planering, senaste 12 månaderna</h2><p class="muted">Sammanställning av sparade dagsbilder under de senaste 12 månaderna, oberoende av Snapshot-valen ovan. Samma fartyg kan förekomma på flera datum. Uppgifterna avser publicerade poster och planering, inte verifierade anlöp.</p><p id="chartCoverage" class="muted">Laddar tillgänglig historik…</p><div class="chart-grid"><div><h3>Status i hamnlistan</h3><div id="portStatusChart" class="stat-bars"></div></div><div><h3>Terminaler</h3><div id="portTerminalChart" class="stat-bars"></div></div><div><h3>Fartygstyper</h3><div id="portTypeChart" class="stat-bars"></div></div><div><h3>Vanligaste rutterna – från → till</h3><p class="muted">Hamnlistans uppgifter om föregående och nästa hamn. Antal poster i alla sparade dagsbilder under den senaste tolvmånadersperioden; samma fartyg kan förekomma på flera datum.</p><div id="portRoutesChart" class="stat-bars"></div></div><div><h3>Planerade kryssningsanlöp per månad</h3><div id="cruiseMonthChart" class="stat-bars"></div></div></div></section><section id="ais" class="panel"><h2>AIS – provtagning och täckning</h2><p class="muted">AISStream-prover om 90 sekunder, inklusive äldre prov med rektangulärt geografiskt urval. Metodskiftet kan påverka nivåerna. Diagrammet visar mottagna positionsmeddelanden per prov, inte antal fartyg som passerat eller kontinuerlig täckning.</p><div class="split"><div><h3>Genomsnittligt antal positionsmeddelanden per klockslag</h3><div style="overflow-x:auto"><div id="aisBars" class="bars" style="min-width:720px"><div class="empty">Laddar AIS-mätningar…</div></div></div><p class="muted">Svensk lokal tid (00–23). Medelvärde per 90-sekundersprov för varje timme med mätningar. Siffran ovanför varje stapel anger antal prov. Timmar utan prov markeras som saknade, inte noll. Äldre och nyare geografiska metoder kan skilja sig.</p></div><div><h3>Senaste prov</h3><div id="aisDetails" class="note">Laddar…</div><p class="muted">Tider i svensk lokal tid. Klass A och B summeras. Ett unikt MMSI per prov är inte ett unikt fartyg per dag.</p></div></div>
 <div class="scroll ais-table-scroll" tabindex="0" aria-label="AIS-provtagningar, rulla för att se fler än tio rader"><table><thead><tr><th>Provstart</th><th>Positionsmeddelanden</th><th>Unika MMSI</th><th>Mättid</th><th>Mätkvalitet</th></tr></thead><tbody id="aisRows"></tbody></table></div></section>
 <div class="footer">Prototyp · <a href="https://github.com/Lulea-statistik/Lulea_sjotrafik">Källkod och datainsamling på GitHub</a> · Data laddas från projektets publicerade GitHub Pages-arkiv.</div></main>
 <script src="ais-hourly-average.js"></script><script>
@@ -40,7 +40,7 @@ const OWNER='Lulea-statistik',REPO='Lulea_sjotrafik',BRANCH='main';
 const raw=p=>p.startsWith('data/')?p:p;
 let dataManifest=null;
 const dataSection=folder=>folder==='data/snapshots'?'ships':folder==='data/cruise/snapshots'?'cruises':'ais';
-const el=id=>document.getElementById(id);let ships=[],cruises=[],ais=[],shipSnapshotPaths=[];
+const el=id=>document.getElementById(id);let ships=[],cruises=[],ais=[],shipSnapshotPaths=[],historicalShips=[],historicalCruises=[];
 async function json(url){const r=await fetch(url,{cache:'no-cache'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
 async function list(path){if(!dataManifest)throw Error('Dataförteckningen har inte laddats');return (dataManifest.datasets[dataSection(path)]||[]).map(x=>x.path)}
 function opts(id,values){el(id).replaceChildren(...values.map(v=>{const o=document.createElement('option');o.value=v;o.textContent=v.split('/').pop().replace('.json','');return o}))}
@@ -113,18 +113,31 @@ function drawStatBars(id,items){
  fill(id,items.length?items.map(([label,n])=>'<div class="stat-row"><span class="stat-name" title="'+esc(label)+'">'+esc(label)+'</span><div class="stat-track"><div class="stat-fill" style="width:'+(n/max*100).toFixed(1)+'%"></div></div><strong>'+n+'</strong></div>').join(''):'<p class="muted">Inga observationer.</p>');
 }
 function renderPortCharts(){
- drawStatBars('portStatusChart',chartCounts(ships,x=>x.status));
- drawStatBars('portTerminalChart',chartCounts(ships,x=>x.terminal));
- drawStatBars('portTypeChart',chartCounts(ships,x=>x.details?.['Fartygstyp']));
- drawStatBars('portRoutesChart',chartCounts(ships.filter(x=>String(x.details?.['Ankommer från']||'').trim()||String(x.details?.['Avgår till']||'').trim()),x=>(String(x.details?.['Ankommer från']||'').trim()||'Okänd')+' → '+(String(x.details?.['Avgår till']||'').trim()||'Okänd')).slice(0,15));
+ drawStatBars('portStatusChart',chartCounts(historicalShips,x=>x.status));
+ drawStatBars('portTerminalChart',chartCounts(historicalShips,x=>x.terminal));
+ drawStatBars('portTypeChart',chartCounts(historicalShips,x=>x.details?.['Fartygstyp']));
+ drawStatBars('portRoutesChart',chartCounts(historicalShips.filter(x=>String(x.details?.['Ankommer från']||'').trim()||String(x.details?.['Avgår till']||'').trim()),x=>(String(x.details?.['Ankommer från']||'').trim()||'Okänd')+' → '+(String(x.details?.['Avgår till']||'').trim()||'Okänd')).slice(0,15));
 }
 function renderCruiseChart(){
- drawStatBars('cruiseMonthChart',chartCounts(cruises,x=>{
+ drawStatBars('cruiseMonthChart',chartCounts(historicalCruises,x=>{
   const date=String(x.planned_arrival||'').slice(0,7);
   return /^\\d{4}-\\d{2}$/.test(date)?date:'Okänt datum';
  }).sort((a,b)=>a[0].localeCompare(b[0])));
 }
-
+async function loadHistoricalCharts(){
+ const upper=new Date();const lower=new Date(upper);lower.setFullYear(lower.getFullYear()-1);
+ const from=lower.toISOString().slice(0,10),to=upper.toISOString().slice(0,10);
+ const datasets=await Promise.all(['data/snapshots','data/cruise/snapshots'].map(async folder=>{
+   const all=snapshotDates(await list(folder));
+   const paths=all.filter(p=>{const d=p.split('/').pop().slice(0,10);return d>=from&&d<=to});
+   const loaded=await Promise.allSettled(paths.map(p=>json(raw(p))));
+   const success=loaded.filter(v=>v.status==='fulfilled').map(v=>v.value);
+   return {paths,success,rows:success.flatMap(snapshot=>snapshot.records||[])};
+ }));
+ historicalShips=datasets[0].rows;historicalCruises=datasets[1].rows;
+ renderPortCharts();renderCruiseChart();
+ el('chartCoverage').textContent='Period: '+from+'–'+to+' · Hamnlistor: '+datasets[0].success.length+' av '+datasets[0].paths.length+' dagsbilder · Kryssningsplanering: '+datasets[1].success.length+' av '+datasets[1].paths.length+' dagsbilder. Historiken byggs på efter hand; samma fartyg eller planerade besök kan förekomma i flera dagsbilder.';
+}
 // Monthly counts represent records visible in the latest respective snapshot only.
 function renderFutureArrivals(){
  const container=el('futureBars');
@@ -201,11 +214,11 @@ async function loadAllShipSnapshots(){
  el('shipStamp').textContent=available.length+' av '+shipSnapshotPaths.length+' dagsbilder inlästa, samma fartyg kan förekomma flera gånger';
  const statuses=[...new Set(ships.map(x=>x.status).filter(Boolean))].sort();
  opts('statusFilter',['',...statuses]);el('statusFilter').options[0].textContent='Alla statusar';
- renderShips();renderPortCharts();renderFutureArrivals();
+ renderShips();renderFutureArrivals();
 }
 async function selectShipSnapshot(value){if(value==='ALL'){try{await loadAllShipSnapshots()}catch(e){fail('shipRows',8,e)}}else await loadShips(value)}
 async function loadShips(path){try{const data=await json(raw(path));ships=data.records||[];el('countShips').textContent=ships.length;el('countArrived').textContent=ships.filter(x=>x.status==='Ankommit').length;el('shipStamp').textContent='Senast insamlat: '+formatDate(data.collected_at||data.date);const statuses=[...new Set(ships.map(x=>x.status).filter(Boolean))].sort();opts('statusFilter',['',...statuses]);el('statusFilter').options[0].textContent='Alla statusar';renderShips();renderPortCharts();renderFutureArrivals()}catch(e){fail('shipRows',8,e)}}
-async function loadCruises(path){try{const data=await json(raw(path));cruises=data.records||[];el('countCruise').textContent=cruises.length;el('cruiseStamp').textContent='Senast insamlat: '+formatDate(data.collected_at||data.date);renderCruises();renderCruiseChart();renderFutureArrivals()}catch(e){fail('cruiseRows',8,e)}}
+async function loadCruises(path){try{const data=await json(raw(path));cruises=data.records||[];el('countCruise').textContent=cruises.length;el('cruiseStamp').textContent='Senast insamlat: '+formatDate(data.collected_at||data.date);renderCruises();renderFutureArrivals()}catch(e){fail('cruiseRows',8,e)}}
 async function loadAis(){try{
   const paths=await list('data/ais_probe');
   if(!paths.length)throw Error('Inga publicerade AIS-prov finns');
@@ -235,6 +248,7 @@ async function init(){
   for(const [folder,selector,loader] of [['data/snapshots','shipDay',loadShips],['data/cruise/snapshots','cruiseDay',loadCruises]]){
     try{const paths=snapshotDates(await list(folder));if(!paths.length)throw Error('Inga snapshots');opts(selector,selector==='shipDay'?['ALL',...paths]:paths);if(selector==='shipDay')el(selector).options[0].textContent='Alla datum – sammanställd lista';el(selector).value=paths[0];if(selector==='shipDay'){shipSnapshotPaths=paths;el('shipDayCount').textContent=paths.length+' tillgängliga datum ('+paths.at(-1).split('/').pop().replace('.json','')+'–'+paths[0].split('/').pop().replace('.json','')+') · senaste förvalt';}el(selector).addEventListener('change',e=>selector==='shipDay'?selectShipSnapshot(e.target.value):loader(e.target.value));await loader(paths[0])}
     catch(e){if(selector==='shipDay'){fail('shipRows',7,e);el('shipDayCount').textContent='Datum kunde inte laddas'}else fail('cruiseRows',6,e);el(selector).replaceChildren()}}
+  try{await loadHistoricalCharts()}catch(e){el('chartCoverage').textContent='Historiska diagram kunde inte laddas: '+e.message;}
   await loadAis();
 }
 document.querySelectorAll('[data-ship-sort]').forEach(th=>{th.addEventListener('click',()=>chooseShipSort(th.dataset.shipSort));th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();chooseShipSort(th.dataset.shipSort)}})});
