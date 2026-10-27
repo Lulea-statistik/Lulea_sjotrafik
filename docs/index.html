@@ -40,7 +40,7 @@ const OWNER='Lulea-statistik',REPO='Lulea_sjotrafik',BRANCH='main';
 const raw=p=>p.startsWith('data/')?p:p;
 let dataManifest=null;
 const dataSection=folder=>folder==='data/snapshots'?'ships':folder==='data/cruise/snapshots'?'cruises':'ais';
-const el=id=>document.getElementById(id);let ships=[],cruises=[],ais=[];
+const el=id=>document.getElementById(id);let ships=[],cruises=[],ais=[],shipSnapshotPaths=[];
 async function json(url){const r=await fetch(url,{cache:'no-cache'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
 async function list(path){if(!dataManifest)throw Error('Dataförteckningen har inte laddats');return (dataManifest.datasets[dataSection(path)]||[]).map(x=>x.path)}
 function opts(id,values){el(id).replaceChildren(...values.map(v=>{const o=document.createElement('option');o.value=v;o.textContent=v.split('/').pop().replace('.json','');return o}))}
@@ -69,7 +69,7 @@ function renderShips(){
  const data=sortShipRows(ships.filter(x=>(!status||x.status===status)&&JSON.stringify(x).toLocaleLowerCase('sv').includes(term)));
  document.querySelectorAll('[data-ship-sort]').forEach(th=>{th.setAttribute('aria-sort',shipSort.key===th.dataset.shipSort?(shipSort.direction==='asc'?'ascending':'descending'):'none')});
  fill('shipRows',data.length?data.map(x=>'<tr><td class="flag-col">'+vesselFlag(x)+'</td><td><b>'+safe(x.vessel)+'</b><br><small class="muted">IMO '+safe(x.imo)+'</small></td><td>'+safe(x.terminal)+'</td><td>'+safe(x.arrival)+'</td><td>'+safe(x.departure)+'</td><td><span class="tag '+(x.status==='Ankommit'?'in':x.status==='Väntad ankomst'?'expected':'out')+'">'+safe(x.status)+'</span></td><td>'+safe(x.details?.['Ankommer från'])+' → '+safe(x.details?.['Avgår till'])+'</td><td>'+safe(x.details?.['Avsikt med besöket'])+'</td></tr>').join(''):'<tr><td colspan="8" class="empty">Inga matchande poster</td></tr>');
- el('shipResult').textContent=data.length+' av '+ships.length+' poster visas';
+ el('shipResult').textContent=data.length+' av '+ships.length+' poster visas'+(el('shipDay').value==='ALL'?' (alla sparade dagsbilder; samma fartyg kan förekomma flera datum)':'');
 }
 let cruiseCapacities={};
 const CRUISE_FLAGS={
@@ -174,6 +174,21 @@ function renderAisTrend(){
  el('aisTrendNote').textContent=series.length+' prov · '+formatDate(series[0].sample_started_utc)+' till '+formatDate(series.at(-1).sample_started_utc)+'. Prov utan träffar visas inte. Mellan provtagningarna saknas kontinuerliga observationer.';
 }
 
+async function loadAllShipSnapshots(){
+ const loaded=await Promise.allSettled(shipSnapshotPaths.map(p=>json(raw(p))));
+ const available=loaded.filter(x=>x.status==='fulfilled').map(x=>x.value);
+ if(!available.length)throw Error('Inga dagsbilder kunde läsas');
+ const rows=[];
+ for(const snapshot of available)for(const record of snapshot.records||[])rows.push({...record,snapshot_date:String(snapshot.date||snapshot.collected_at||'').slice(0,10)});
+ ships=rows;
+ el('countShips').textContent=ships.length;
+ el('countArrived').textContent=ships.filter(x=>x.status==='Ankommit').length;
+ el('shipStamp').textContent=available.length+' av '+shipSnapshotPaths.length+' dagsbilder inlästa, samma fartyg kan förekomma flera gånger';
+ const statuses=[...new Set(ships.map(x=>x.status).filter(Boolean))].sort();
+ opts('statusFilter',['',...statuses]);el('statusFilter').options[0].textContent='Alla statusar';
+ renderShips();renderPortCharts();renderFutureArrivals();
+}
+async function selectShipSnapshot(value){if(value==='ALL'){try{await loadAllShipSnapshots()}catch(e){fail('shipRows',8,e)}}else await loadShips(value)}
 async function loadShips(path){try{const data=await json(raw(path));ships=data.records||[];el('countShips').textContent=ships.length;el('countArrived').textContent=ships.filter(x=>x.status==='Ankommit').length;el('shipStamp').textContent='Senast insamlat: '+formatDate(data.collected_at||data.date);const statuses=[...new Set(ships.map(x=>x.status).filter(Boolean))].sort();opts('statusFilter',['',...statuses]);el('statusFilter').options[0].textContent='Alla statusar';renderShips();renderPortCharts();renderFutureArrivals()}catch(e){fail('shipRows',8,e)}}
 async function loadCruises(path){try{const data=await json(raw(path));cruises=data.records||[];el('countCruise').textContent=cruises.length;el('cruiseStamp').textContent='Senast insamlat: '+formatDate(data.collected_at||data.date);renderCruises();renderCruiseChart();renderFutureArrivals()}catch(e){fail('cruiseRows',8,e)}}
 async function loadAis(){try{
@@ -203,7 +218,7 @@ async function init(){
     return;
   }
   for(const [folder,selector,loader] of [['data/snapshots','shipDay',loadShips],['data/cruise/snapshots','cruiseDay',loadCruises]]){
-    try{const paths=snapshotDates(await list(folder));if(!paths.length)throw Error('Inga snapshots');opts(selector,paths);el(selector).value=paths[0];if(selector==='shipDay'){el('shipDayCount').textContent=paths.length+' tillgängliga datum ('+paths.at(-1).split('/').pop().replace('.json','')+'–'+paths[0].split('/').pop().replace('.json','')+') · senaste förvalt';}el(selector).addEventListener('change',e=>loader(e.target.value));await loader(paths[0])}
+    try{const paths=snapshotDates(await list(folder));if(!paths.length)throw Error('Inga snapshots');opts(selector,selector==='shipDay'?['ALL',...paths]:paths);if(selector==='shipDay')el(selector).options[0].textContent='Alla datum – sammanställd lista';el(selector).value=paths[0];if(selector==='shipDay'){shipSnapshotPaths=paths;el('shipDayCount').textContent=paths.length+' tillgängliga datum ('+paths.at(-1).split('/').pop().replace('.json','')+'–'+paths[0].split('/').pop().replace('.json','')+') · senaste förvalt';}el(selector).addEventListener('change',e=>selector==='shipDay'?selectShipSnapshot(e.target.value):loader(e.target.value));await loader(paths[0])}
     catch(e){if(selector==='shipDay'){fail('shipRows',7,e);el('shipDayCount').textContent='Datum kunde inte laddas'}else fail('cruiseRows',6,e);el(selector).replaceChildren()}}
   await loadAis();
 }
