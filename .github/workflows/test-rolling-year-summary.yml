@@ -1,0 +1,19 @@
+name: Test rolling-year summary charts
+on:
+  pull_request:
+    paths:
+      - docs/index.html
+      - tests/rolling-year-summary.test.cjs
+      - .github/workflows/test-rolling-year-summary.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/rolling-year-summary.test.cjs
