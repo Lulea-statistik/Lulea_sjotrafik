@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-27",
+  "updated_at": "2026-10-28",
   "method": "Current published passenger capacity and route-dependent lower levels. Historical design figures kept separately, never interpreted as current maximum.",
   "vessels": [
     {
@@ -12,7 +12,7 @@
       "lower_passengers": 199,
       "capacity_basis": "199 vid Antarktis/Svalbard; 230 vid övriga resor",
       "source_check": "pass",
-      "source_checked_at": "2026-10-27"
+      "source_checked_at": "2026-10-28"
     },
     {
       "vessel": "LE COMMANDANT CHARCOT",
@@ -24,7 +24,7 @@
       "lower_passengers": 200,
       "capacity_basis": "200 vid Antarktisresor; 245 annars",
       "source_check": "pass",
-      "source_checked_at": "2026-10-27"
+      "source_checked_at": "2026-10-28"
     },
     {
       "vessel": "SPITSBERGEN",
@@ -38,7 +38,7 @@
       "historical_capacity": 335,
       "historical_source": "https://www.knudehansen.com/wp-content/uploads/2017/10/Article_Spitsbergen_Shippax_Design.pdf",
       "source_check": "pass",
-      "source_checked_at": "2026-10-27"
+      "source_checked_at": "2026-10-28"
     }
   ]
 }
