@@ -1,0 +1,44 @@
+{
+  "sample_started_utc": "2026-10-30T12:47:40.505481+00:00",
+  "sample_seconds": 90,
+  "sampling_hour_utc": 12,
+  "bbox_wgs84_latlon": [
+    [
+      65.06965380799399,
+      21.839856129726588
+    ],
+    [
+      65.87367143140983,
+      23.1383421263494
+    ]
+  ],
+  "geographic_filter": "lulea_nmd_marine_v1",
+  "geographic_filter_source": "https://raw.githubusercontent.com/Lulea-statistik/SMHI_Lulea-Kallax_weather-climate/main/data/lightning/geography_nmd.geojson",
+  "message_counts": {
+    "PositionReport": 3
+  },
+  "parallel_comparison": {
+    "rectangle_message_counts": {
+      "PositionReport": 3
+    },
+    "rectangle_unique_mmsi_count": 3,
+    "marine_message_counts": {
+      "PositionReport": 3
+    },
+    "marine_unique_mmsi_count": 3,
+    "difference_unique_mmsi_count": 0,
+    "sample_basis": "same 90-second AISStream subscription and position messages",
+    "method": "rectangle counts all valid positions; marine counts those covered by NMD polygon"
+  },
+  "unique_mmsi_count": 3,
+  "rejected_message_counts": {
+    "missing_position": 1
+  },
+  "quality_margin_m": 30,
+  "quality_classification_crs": "EPSG:3006",
+  "quality_unique_mmsi": {
+    "uncertain_boundary": 3
+  },
+  "quality_summary": "uncertain_boundary",
+  "warning": "Only received positions within NMD marine water; not continuous vessel coverage"
+}
