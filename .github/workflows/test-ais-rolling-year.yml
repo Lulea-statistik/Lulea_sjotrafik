@@ -1,0 +1,19 @@
+name: Test AIS rolling year
+on:
+  pull_request:
+    paths:
+      - docs/index.html
+      - tests/ais-rolling-year.test.cjs
+      - .github/workflows/test-ais-rolling-year.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/ais-rolling-year.test.cjs
