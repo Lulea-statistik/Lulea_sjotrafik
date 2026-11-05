@@ -17,5 +17,8 @@ test('all ship dates remain selectable newest first',()=>{
 test('AIS chart shows number of samples by clock hour',()=>{
  assert.match(html,/class="ais-sample-count"/);
  assert.match(html,/b\.samples\?b\.samples/);
- assert.match(html,/AisHourlyAverage\.hourly\(ais\)/);
+ assert.match(html,/AisHourlyAverage\.hourly\(selected\)/);
+ assert.match(html,/ais\.filter\(x=>aisMethod\(x\)===method\)/);
+ assert.match(html,/id="aisHourlyMethod"/);
+ assert.match(html,/el\('aisHourlyMethod'\)\.addEventListener\('change',renderAisHourly\)/);
 });
